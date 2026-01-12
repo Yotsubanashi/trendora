@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendora - Fashion & Lifestyle Shopping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Trend<span>ora</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands, and more...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-icons">
+                <a href="login.html" class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Carousel -->
+    <section class="banner-carousel">
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <a href="sale.html" class="carousel-slide">
+                    <div class="slide-content">
+                        <h2>Flash Sale Extravaganza</h2>
+                        <p>Up to 70% OFF on trending fashion items</p>
+                        <button class="slide-btn" onclick="event.preventDefault()">Shop Now</button>
+                    </div>
+                </a>
+                <a href="new-arrivals.html" class="carousel-slide" style="background: linear-gradient(135deg, var(--soft-coral), #ff8a7a);">
+                    <div class="slide-content">
+                        <h2>New Arrivals 2026</h2>
+                        <p>Discover the latest trends in fashion & lifestyle</p>
+                        <button class="slide-btn" onclick="event.preventDefault()">Explore Collection</button>
+                    </div>
+                </a>
+                <a href="category.html" class="carousel-slide" style="background: linear-gradient(135deg, #2d3e5f, var(--midnight-navy));">
+                    <div class="slide-content">
+                        <h2>Free Shipping</h2>
+                        <p>On orders over $50 - Limited time offer</p>
+                        <button class="slide-btn" onclick="event.preventDefault()">Start Shopping</button>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Menu -->
+    <section class="category-menu">
+        <div class="category-scroll">
+            <a href="index.html" class="category-item active">All Products</a>
+            <a href="women.html" class="category-item">Women</a>
+            <a href="men.html" class="category-item">Men</a>
+            <a href="accessories.html" class="category-item">Accessories</a>
+            <a href="shoes.html" class="category-item">Shoes</a>
+            <a href="bags.html" class="category-item">Bags</a>
+            <a href="beauty.html" class="category-item">Beauty</a>
+            <a href="new-arrivals.html" class="category-item">New Arrivals</a>
+            <a href="sale.html" class="category-item">Sale</a>
+        </div>
+    </section>
+
+    <!-- Flash Deals Section -->
+    <section class="product-section">
+        <div class="section-header">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <h2><i class="fas fa-bolt"></i> Flash Deals</h2>
+                <div class="flash-timer">
+                    <span class="timer-label">Ends in:</span>
+                    <div class="timer-digits">
+                        <span class="timer-digit">05</span>:
+                        <span class="timer-digit">23</span>:
+                        <span class="timer-digit">47</span>
+                    </div>
+                </div>
+            </div>
+            <a href="category.html?cat=flash" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="product-grid">
+            <!-- Product Card 1 -->
+            <div class="product-card" data-product-id="1">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" alt="Cotton T-Shirt">
+                    <span class="sale-badge">-45%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Trendy Cotton T-Shirt for Women</div>
+                    <div class="product-price">
+                        <span class="current-price">$22</span>
+                        <span class="original-price">$40</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(245)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card" data-product-id="2">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop" alt="Classic Sneakers">
+                    <span class="sale-badge">-60%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic Sneakers Premium Quality</div>
+                    <div class="product-price">
+                        <span class="current-price">$48</span>
+                        <span class="original-price">$120</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(189)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card" data-product-id="3">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop" alt="Sunglasses">
+                    <span class="sale-badge">-35%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Vintage Round Sunglasses UV Protection</div>
+                    <div class="product-price">
+                        <span class="current-price">$19</span>
+                        <span class="original-price">$29</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(412)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card" data-product-id="4">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400&h=400&fit=crop" alt="Leather Handbag">
+                    <span class="sale-badge">-50%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Handbag Crossbody Bag</div>
+                    <div class="product-price">
+                        <span class="current-price">$55</span>
+                        <span class="original-price">$110</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(156)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="product-card" data-product-id="5">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop" alt="Minimalist Watch">
+                    <span class="sale-badge">-40%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Minimalist Watch Stainless Steel</div>
+                    <div class="product-price">
+                        <span class="current-price">$36</span>
+                        <span class="original-price">$60</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(328)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="product-card" data-product-id="6">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop" alt="Crystal Earrings">
+                    <span class="sale-badge">-55%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Crystal Earrings Elegant Design</div>
+                    <div class="product-price">
+                        <span class="current-price">$15</span>
+                        <span class="original-price">$33</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(501)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="product-section">
+        <div class="section-header">
+            <h2><i class="fas fa-fire"></i> Best Sellers</h2>
+            <a href="category.html?cat=bestsellers" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" data-product-id="7">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1533055640609-24b498dfd74c?w=400&h=400&fit=crop" alt="Fedora Hat">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Wide Brim Fedora Hat Summer Style</div>
+                    <div class="product-price">
+                        <span class="current-price">$28</span>
+                        <span class="original-price">$45</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(298)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="8">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop" alt="Dress Shirt">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Slim Fit Dress Shirt Business Casual</div>
+                    <div class="product-price">
+                        <span class="current-price">$42</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(567)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="9">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop" alt="Gold Ring">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Gold Plated Ring Adjustable Size</div>
+                    <div class="product-price">
+                        <span class="current-price">$24</span>
+                        <span class="original-price">$38</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(789)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="10">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop" alt="Denim Jacket">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Casual Denim Jacket Vintage Wash</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(423)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="11">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop" alt="Cotton Socks">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Cotton Socks Pack of 5 Multicolor</div>
+                    <div class="product-price">
+                        <span class="current-price">$16</span>
+                        <span class="original-price">$25</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(1.2k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="12">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605733513597-f3873e3d1706?w=400&h=400&fit=crop" alt="Leather Gloves">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Gloves Winter Collection</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(267)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="product-section">
+        <div class="section-header">
+            <h2><i class="fas fa-star"></i> New Arrivals</h2>
+            <a href="new-arrivals.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" data-product-id="13">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&h=400&fit=crop" alt="Hair Accessories">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Luxury Hair Accessories Crown Headband</div>
+                    <div class="product-price">
+                        <span class="current-price">$35</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(89)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="14">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop" alt="Ankle Boots">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Ankle Boots Suede Leather Zip Up</div>
+                    <div class="product-price">
+                        <span class="current-price">$85</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(134)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="15">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop" alt="Laptop Bag">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Laptop Bag Professional Business Case</div>
+                    <div class="product-price">
+                        <span class="current-price">$72</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(201)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="16">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=400&h=400&fit=crop" alt="Silk Scarf">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Silk Scarf Floral Print Luxury</div>
+                    <div class="product-price">
+                        <span class="current-price">$29</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(167)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="17">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop" alt="Graphic Hoodie">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Graphic Print Hoodie Unisex Style</div>
+                    <div class="product-price">
+                        <span class="current-price">$45</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(312)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="18">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop" alt="Baseball Cap">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Baseball Cap Embroidered Logo</div>
+                    <div class="product-price">
+                        <span class="current-price">$22</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(445)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended For You Section -->
+    <section class="product-section">
+        <div class="section-header">
+            <h2><i class="fas fa-heart"></i> Recommended For You</h2>
+            <a href="category.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" data-product-id="19">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=400&fit=crop" alt="Long Sleeve Shirt">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Striped Long Sleeve Shirt Casual Fit</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                        <span class="original-price">$55</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(223)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="20">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1527385352018-3c26dd6c3916?w=400&h=400&fit=crop" alt="Travel Backpack">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Travel Backpack Waterproof Large Capacity</div>
+                    <div class="product-price">
+                        <span class="current-price">$62</span>
+                        <span class="original-price">$89</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(391)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="21">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop" alt="Luxury Perfume">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Luxury Perfume Floral Notes 50ml</div>
+                    <div class="product-price">
+                        <span class="current-price">$78</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(512)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="22">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=400&h=400&fit=crop" alt="Phone Case">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Phone Case Shockproof Slim Design</div>
+                    <div class="product-price">
+                        <span class="current-price">$14</span>
+                        <span class="original-price">$22</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(834)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="23">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?w=400&h=400&fit=crop" alt="Wireless Earbuds">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Wireless Earbuds Noise Cancelling</div>
+                    <div class="product-price">
+                        <span class="current-price">$95</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(1.5k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="24">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop" alt="Wallet">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Slim Wallet RFID Blocking Minimalist</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                        <span class="original-price">$40</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(589)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Now Section -->
+    <section class="product-section">
+        <div class="section-header">
+            <h2><i class="fas fa-chart-line"></i> Trending Now</h2>
+            <a href="category.html?cat=trending" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" data-product-id="25">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=400&fit=crop" alt="Makeup Palette">
+                    <span class="sale-badge">-25%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Makeup Palette Eyeshadow 12 Colors</div>
+                    <div class="product-price">
+                        <span class="current-price">$34</span>
+                        <span class="original-price">$45</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(923)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="26">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop" alt="Running Shoes">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Running Shoes Lightweight Breathable</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(456)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="27">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=400&h=400&fit=crop" alt="Oversized Sweatshirt">
+                    <span class="sale-badge">-30%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Oversized Sweatshirt Cozy Winter</div>
+                    <div class="product-price">
+                        <span class="current-price">$42</span>
+                        <span class="original-price">$60</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(712)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="28">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1556228841-a0d4c6f6e6bd?w=400&h=400&fit=crop" alt="Face Mask Sheet">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Face Mask Sheet Set Hydrating 10pcs</div>
+                    <div class="product-price">
+                        <span class="current-price">$26</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(1.8k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="29">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?w=400&h=400&fit=crop" alt="Minimalist Wallet">
+                    <span class="sale-badge">-20%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Compact Leather Wallet Card Holder</div>
+                    <div class="product-price">
+                        <span class="current-price">$28</span>
+                        <span class="original-price">$35</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(589)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="30">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop" alt="Ceramic Mug">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Ceramic Mug Set Modern Design 4pcs</div>
+                    <div class="product-price">
+                        <span class="current-price">$29</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(398)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Trendora</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Payment Security</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                        <li><a href="#">Email Support</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                        <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="social-icon"><i class="fab fa-twitter"></i></div>
+                        <div class="social-icon"><i class="fab fa-pinterest"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="tagline">"Where Style Meets Trendora"</p>
+                <p>&copy; 2026 Trendora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

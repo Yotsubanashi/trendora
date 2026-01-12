@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bags & Wallets - Trendora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .category-hero {
+            background: linear-gradient(135deg, #8B6F47, #A58B6F);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .category-hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .category-hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .filter-sort-bar {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--soft-coral);
+            background: white;
+            color: var(--soft-coral);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--soft-coral);
+            color: white;
+        }
+
+        .sort-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-dropdown select {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .results-count {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 0 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .category-hero h1 {
+                font-size: 32px;
+            }
+
+            .filter-sort-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .sort-dropdown {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body data-category="bags">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Trend<span>ora</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands, and more...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-icons">
+                <a href="login.html" class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Bags & Wallets</span>
+    </div>
+
+    <!-- Category Hero -->
+    <section class="category-hero">
+        <h1>Bags & Wallets</h1>
+        <p>Carry your essentials in style</p>
+    </section>
+
+    <!-- Category Menu -->
+    <section class="category-menu">
+        <div class="category-scroll">
+            <a href="index.html" class="category-item">All Products</a>
+            <a href="women.html" class="category-item">Women</a>
+            <a href="men.html" class="category-item">Men</a>
+            <a href="accessories.html" class="category-item">Accessories</a>
+            <a href="shoes.html" class="category-item">Shoes</a>
+            <a href="bags.html" class="category-item">Bags</a>
+            <a href="beauty.html" class="category-item">Beauty</a>
+            <a href="new-arrivals.html" class="category-item">New Arrivals</a>
+            <a href="sale.html" class="category-item">Sale</a>
+        </div>
+    </section>
+
+    <!-- Filter and Sort Bar -->
+    <section class="filter-sort-bar">
+        <div class="filter-buttons">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Under $25</button>
+            <button class="filter-btn">$25 - $50</button>
+            <button class="filter-btn">$50 - $100</button>
+            <button class="filter-btn">Over $100</button>
+        </div>
+        <div class="sort-dropdown">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="results-count">
+        Showing <strong id="results-count">30</strong> products
+    </div>
+
+    <!-- Products Grid -->
+    <section class="product-section">
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-product-id="500">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=400&h=400&fit=crop&q=80" alt="Leather Handbag">
+                    <span class="sale-badge">-50%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Handbag Crossbody Chic</div>
+                    <div class="product-price">
+                        <span class="current-price">$55</span>
+                        <span class="original-price">$110</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(156)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-product-id="501">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400&h=400&fit=crop&q=80" alt="Travel Backpack" loading="lazy">
+                    <span class="sale-badge">-30%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Travel Backpack Waterproof</div>
+                    <div class="product-price">
+                        <span class="current-price">$62</span>
+                        <span class="original-price">$89</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(391)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-product-id="502">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&q=80" alt="Canvas Tote" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Canvas Tote Bag Large Capacity</div>
+                    <div class="product-price">
+                        <span class="current-price">$35</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(423)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-product-id="503">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?w=400&h=400&fit=crop&q=80" alt="Minimalist Wallet" loading="lazy">
+                    <span class="sale-badge">-20%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Slim Wallet RFID Protection</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                        <span class="original-price">$40</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(589)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-product-id="504">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&h=400&fit=crop&q=80" alt="Evening Clutch" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Designer Evening Clutch Elegant</div>
+                    <div class="product-price">
+                        <span class="current-price">$78</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(198)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-product-id="505">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop&q=80" alt="Messenger Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Messenger Bag Work</div>
+                    <div class="product-price">
+                        <span class="current-price">$95</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(267)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card" data-product-id="506">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=400&h=400&fit=crop&q=80" alt="Duffle Bag" loading="lazy">
+                    <span class="sale-badge">-25%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Weekend Duffel Bag Travel</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                        <span class="original-price">$91</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(312)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card" data-product-id="507">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1624798787824-e8f630855273?w=400&h=400&fit=crop&q=80" alt="Laptop Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Laptop Bag Business Professional</div>
+                    <div class="product-price">
+                        <span class="current-price">$85</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(445)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card" data-product-id="508">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400&h=400&fit=crop&q=80" alt="Satchel Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic Satchel Bag Vintage</div>
+                    <div class="product-price">
+                        <span class="current-price">$72</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-card" data-product-id="509">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=400&h=400&fit=crop&q=80" alt="Coin Purse" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Coin Purse Compact</div>
+                    <div class="product-price">
+                        <span class="current-price">$18</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(678)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-card" data-product-id="510">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop&q=80" alt="Mini Backpack" loading="lazy">
+                    <span class="sale-badge">-35%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Mini Backpack Fashion Statement</div>
+                    <div class="product-price">
+                        <span class="current-price">$45</span>
+                        <span class="original-price">$69</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(389)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-card" data-product-id="511">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=400&h=400&fit=crop&q=80" alt="Crossbody Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Mini Crossbody Bag Trendy</div>
+                    <div class="product-price">
+                        <span class="current-price">$52</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(523)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 13 -->
+            <div class="product-card" data-product-id="512">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?w=400&h=400&fit=crop&q=80" alt="Leather Tote" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Tote Bag Professional</div>
+                    <div class="product-price">
+                        <span class="current-price">$105</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(298)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 14 -->
+            <div class="product-card" data-product-id="513">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1622560481196-0a56f9dbeba8?w=400&h=400&fit=crop&q=80" alt="Belt Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Belt Bag Fanny Pack Stylish</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(612)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 15 -->
+            <div class="product-card" data-product-id="514">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553830591-d8632a99e6ff?w=400&h=400&fit=crop&q=80" alt="Bucket Bag" loading="lazy">
+                    <span class="sale-badge">-28%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Bucket Bag Drawstring Leather</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                        <span class="original-price">$81</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 16 -->
+            <div class="product-card" data-product-id="515">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&h=400&fit=crop&q=80" alt="Gym Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Sports Gym Bag Duffel Large</div>
+                    <div class="product-price">
+                        <span class="current-price">$48</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(456)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 17 -->
+            <div class="product-card" data-product-id="516">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596453657781-6ac4c0806c36?w=400&h=400&fit=crop&q=80" alt="Card Holder" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Card Holder Wallet Slim</div>
+                    <div class="product-price">
+                        <span class="current-price">$22</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(892)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 18 -->
+            <div class="product-card" data-product-id="517">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=400&h=400&fit=crop&q=80" alt="Bowling Bag" loading="lazy">
+                    <span class="sale-badge">-32%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Bowling Bag Structured Classic</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                        <span class="original-price">$100</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(178)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 19 -->
+            <div class="product-card" data-product-id="518">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400&h=400&fit=crop&q=80" alt="Wristlet" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Wristlet Pouch Phone Wallet</div>
+                    <div class="product-price">
+                        <span class="current-price">$28</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(534)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 20 -->
+            <div class="product-card" data-product-id="519">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1575538559027-ff8ed18c80a5?w=400&h=400&fit=crop&q=80" alt="Briefcase" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Briefcase Executive</div>
+                    <div class="product-price">
+                        <span class="current-price">$145</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(267)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 21 -->
+            <div class="product-card" data-product-id="520">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=400&h=400&fit=crop&q=80" alt="Hobo Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Hobo Shoulder Bag Slouchy</div>
+                    <div class="product-price">
+                        <span class="current-price">$65</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(312)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 22 -->
+            <div class="product-card" data-product-id="521">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?w=400&h=400&fit=crop&q=80" alt="Camera Bag" loading="lazy">
+                    <span class="sale-badge">-26%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Camera Bag Padded Protection</div>
+                    <div class="product-price">
+                        <span class="current-price">$55</span>
+                        <span class="original-price">$74</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(445)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 23 -->
+            <div class="product-card" data-product-id="522">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1590739213846-99137296c5ce?w=400&h=400&fit=crop&q=80" alt="Cosmetic Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Travel Cosmetic Bag Makeup</div>
+                    <div class="product-price">
+                        <span class="current-price">$25</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(723)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 24 -->
+            <div class="product-card" data-product-id="523">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1624959991656-c58068769163?w=400&h=400&fit=crop&q=80" alt="Sling Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Sling Bag Chest Pack Outdoor</div>
+                    <div class="product-price">
+                        <span class="current-price">$42</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(389)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 25 -->
+            <div class="product-card" data-product-id="524">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&h=400&fit=crop&q=80" alt="Luggage Set" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Rolling Luggage Hardshell Set</div>
+                    <div class="product-price">
+                        <span class="current-price">$185</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 26 -->
+            <div class="product-card" data-product-id="525">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1590739239607-07f99049f3e5?w=400&h=400&fit=crop&q=80" alt="Chain Bag" loading="lazy">
+                    <span class="sale-badge">-38%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Chain Shoulder Bag Quilted</div>
+                    <div class="product-price">
+                        <span class="current-price">$82</span>
+                        <span class="original-price">$132</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(289)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 27 -->
+            <div class="product-card" data-product-id="526">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop&q=80" alt="Doctor Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Doctor Bag Vintage Style</div>
+                    <div class="product-price">
+                        <span class="current-price">$92</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(156)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 28 -->
+            <div class="product-card" data-product-id="527">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?w=400&h=400&fit=crop&q=80" alt="Saddle Bag" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Saddle Bag Curved Design</div>
+                    <div class="product-price">
+                        <span class="current-price">$72</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(367)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 29 -->
+            <div class="product-card" data-product-id="528">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=400&h=400&fit=crop&q=80" alt="Pouch Set" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Zip Pouch Set Organizer 3pc</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(612)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 30 -->
+            <div class="product-card" data-product-id="529">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&h=400&fit=crop&q=80" alt="Evening Bag" loading="lazy">
+                    <span class="sale-badge">-29%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Beaded Evening Bag Sparkle</div>
+                    <div class="product-price">
+                        <span class="current-price">$62</span>
+                        <span class="original-price">$87</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    <section class="product-section">
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 40px;">
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Previous</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: var(--soft-coral); color: white; border-radius: 8px; cursor: pointer; font-weight: 600;">1</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">2</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Next</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Trendora</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Payment Security</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                        <li><a href="#">Email Support</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                        <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="social-icon"><i class="fab fa-twitter"></i></div>
+                        <div class="social-icon"><i class="fab fa-pinterest"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="tagline">"Where Style Meets Trendora"</p>
+                <p>&copy; 2026 Trendora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Set active category in navigation
+        const currentPage = 'bags.html';
+        document.querySelectorAll('.category-item').forEach(item => {
+            if (item.getAttribute('href') === currentPage) {
+                item.classList.add('active');
+            }
+        });
+
+        // Filter button functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

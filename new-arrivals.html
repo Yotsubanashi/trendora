@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals - Trendora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .category-hero {
+            background: linear-gradient(135deg, var(--soft-coral), #ff8a7a);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .category-hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .category-hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .filter-sort-bar {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--soft-coral);
+            background: white;
+            color: var(--soft-coral);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--soft-coral);
+            color: white;
+        }
+
+        .sort-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-dropdown select {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .results-count {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 0 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .category-hero h1 {
+                font-size: 32px;
+            }
+
+            .filter-sort-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .sort-dropdown {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body data-category="new-arrivals">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Trend<span>ora</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands, and more...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-icons">
+                <a href="login.html" class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>New Arrivals</span>
+    </div>
+
+    <!-- Category Hero -->
+    <section class="category-hero">
+        <h1>New Arrivals 2026</h1>
+        <p>Fresh styles just landed</p>
+    </section>
+
+    <!-- Category Menu -->
+    <section class="category-menu">
+        <div class="category-scroll">
+            <a href="index.html" class="category-item">All Products</a>
+            <a href="women.html" class="category-item">Women</a>
+            <a href="men.html" class="category-item">Men</a>
+            <a href="accessories.html" class="category-item">Accessories</a>
+            <a href="shoes.html" class="category-item">Shoes</a>
+            <a href="bags.html" class="category-item">Bags</a>
+            <a href="beauty.html" class="category-item">Beauty</a>
+            <a href="new-arrivals.html" class="category-item">New Arrivals</a>
+            <a href="sale.html" class="category-item">Sale</a>
+        </div>
+    </section>
+
+    <!-- Filter and Sort Bar -->
+    <section class="filter-sort-bar">
+        <div class="filter-buttons">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Under $25</button>
+            <button class="filter-btn">$25 - $50</button>
+            <button class="filter-btn">$50 - $100</button>
+            <button class="filter-btn">Over $100</button>
+        </div>
+        <div class="sort-dropdown">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="newest">Newest First</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="results-count">
+        Showing <strong id="results-count">30</strong> products
+    </div>
+
+    <!-- Products Grid -->
+    <section class="product-section">
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-product-id="800">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=400&fit=crop&q=80" alt="Fashion Dress">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Satin Slip Dress Evening</div>
+                    <div class="product-price">
+                        <span class="current-price">$78</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(89)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-product-id="801">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1603217192097-cd8da50b5c6e?w=400&h=400&fit=crop&q=80" alt="Puffer Jacket" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Oversized Puffer Jacket Black</div>
+                    <div class="product-price">
+                        <span class="current-price">$125</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(67)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-product-id="802">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop&q=80" alt="Sneakers" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Chunky Platform Sneakers Trendy</div>
+                    <div class="product-price">
+                        <span class="current-price">$85</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(134)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-product-id="803">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=400&h=400&fit=crop&q=80" alt="Crossbody Bag" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Mini Crossbody Bag Leather</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(212)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-product-id="804">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop&q=80" alt="Serum" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Vitamin C Serum Brightening</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(456)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-product-id="805">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=400&fit=crop&q=80" alt="Headphones" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Wireless Headphones Noise Cancel</div>
+                    <div class="product-price">
+                        <span class="current-price">$145</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(892)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card" data-product-id="806">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=400&h=400&fit=crop&q=80" alt="Flare Jeans" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Wide Leg Jeans Vintage Wash</div>
+                    <div class="product-price">
+                        <span class="current-price">$72</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(278)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card" data-product-id="807">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1574634534894-89d7576c8259?w=400&h=400&fit=crop&q=80" alt="Chain Necklace" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Layered Chain Necklace Gold</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(534)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card" data-product-id="808">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?w=400&h=400&fit=crop&q=80" alt="Ankle Boots" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Chelsea Ankle Boots Suede</div>
+                    <div class="product-price">
+                        <span class="current-price">$98</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(312)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-card" data-product-id="809">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=400&h=400&fit=crop&q=80" alt="Midi Dress" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Satin Midi Dress Elegant</div>
+                    <div class="product-price">
+                        <span class="current-price">$88</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(167)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-card" data-product-id="810">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1622519407650-3df9883f76e5?w=400&h=400&fit=crop&q=80" alt="Utility Vest" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Utility Vest Multi-Pocket Cargo</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(189)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-card" data-product-id="811">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&h=400&fit=crop&q=80" alt="Lip Gloss Set" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Lip Gloss Set 6 Colors Glossy</div>
+                    <div class="product-price">
+                        <span class="current-price">$28</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(723)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 13 -->
+            <div class="product-card" data-product-id="812">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?w=400&h=400&fit=crop&q=80" alt="Tote Bag" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Tote Bag Work Essential</div>
+                    <div class="product-price">
+                        <span class="current-price">$92</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(298)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 14 -->
+            <div class="product-card" data-product-id="813">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=400&h=400&fit=crop&q=80" alt="Smart Watch" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Smart Watch Fitness Tracker</div>
+                    <div class="product-price">
+                        <span class="current-price">$125</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(1.1k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 15 -->
+            <div class="product-card" data-product-id="814">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=400&fit=crop&q=80" alt="Loafers" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Patent Leather Loafers Preppy</div>
+                    <div class="product-price">
+                        <span class="current-price">$78</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 16 -->
+            <div class="product-card" data-product-id="815">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop&q=80" alt="Cropped Sweater" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Cropped Cable Knit Sweater</div>
+                    <div class="product-price">
+                        <span class="current-price">$62</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(412)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 17 -->
+            <div class="product-card" data-product-id="816">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400&h=400&fit=crop&q=80" alt="Face Cream" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Retinol Night Cream Anti-Aging</div>
+                    <div class="product-price">
+                        <span class="current-price">$52</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(867)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 18 -->
+            <div class="product-card" data-product-id="817">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=400&fit=crop&q=80" alt="High Top Sneakers" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">High Top Sneakers Canvas Urban</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(534)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 19 -->
+            <div class="product-card" data-product-id="818">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&q=80" alt="Canvas Tote" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Eco Canvas Tote Bag Sustainable</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(678)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 20 -->
+            <div class="product-card" data-product-id="819">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=400&fit=crop&q=80" alt="Camera" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Instant Camera Polaroid Style</div>
+                    <div class="product-price">
+                        <span class="current-price">$89</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(445)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 21 -->
+            <div class="product-card" data-product-id="820">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1614252536773-f5đđ95e8b2b5?w=400&h=400&fit=crop&q=80" alt="Wool Coat" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Double Breasted Wool Coat</div>
+                    <div class="product-price">
+                        <span class="current-price">$165</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(198)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 22 -->
+            <div class="product-card" data-product-id="821">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=400&h=400&fit=crop&q=80" alt="Satin Top" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Satin Cami Top Silky Smooth</div>
+                    <div class="product-price">
+                        <span class="current-price">$42</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(356)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 23 -->
+            <div class="product-card" data-product-id="822">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=400&fit=crop&q=80" alt="Statement Earrings" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Statement Drop Earrings Elegant</div>
+                    <div class="product-price">
+                        <span class="current-price">$36</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(523)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 24 -->
+            <div class="product-card" data-product-id="823">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?w=400&h=400&fit=crop&q=80" alt="Athletic Shorts" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Performance Athletic Shorts</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(712)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 25 -->
+            <div class="product-card" data-product-id="824">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop&q=80" alt="Bluetooth Speaker" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Portable Bluetooth Speaker</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(934)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 26 -->
+            <div class="product-card" data-product-id="825">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop&q=80" alt="Perfume" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Designer Perfume Floral Notes</div>
+                    <div class="product-price">
+                        <span class="current-price">$95</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(612)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 27 -->
+            <div class="product-card" data-product-id="826">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&h=400&fit=crop&q=80" alt="Duffel Bag" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Weekend Duffel Bag Travel</div>
+                    <div class="product-price">
+                        <span class="current-price">$78</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(289)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 28 -->
+            <div class="product-card" data-product-id="827">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1555689502-c4b22d76c56f?w=400&h=400&fit=crop&q=80" alt="Platform Sandals" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Platform Sandals Summer Chic</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(367)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 29 -->
+            <div class="product-card" data-product-id="828">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1562137369-1a1a0bc66744?w=400&h=400&fit=crop&q=80" alt="Linen Shirt" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Oversized Linen Shirt Breathable</div>
+                    <div class="product-price">
+                        <span class="current-price">$54</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(423)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 30 -->
+            <div class="product-card" data-product-id="829">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop&q=80" alt="Face Masks" loading="lazy">
+                    <span class="new-badge">NEW</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Sheet Face Mask Set 10 Pack</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(1.3k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    <section class="product-section">
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 40px;">
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Previous</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: var(--soft-coral); color: white; border-radius: 8px; cursor: pointer; font-weight: 600;">1</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">2</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Next</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Trendora</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Payment Security</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                        <li><a href="#">Email Support</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                        <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="social-icon"><i class="fab fa-twitter"></i></div>
+                        <div class="social-icon"><i class="fab fa-pinterest"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="tagline">"Where Style Meets Trendora"</p>
+                <p>&copy; 2026 Trendora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Set active category in navigation
+        const currentPage = 'new-arrivals.html';
+        document.querySelectorAll('.category-item').forEach(item => {
+            if (item.getAttribute('href') === currentPage) {
+                item.classList.add('active');
+            }
+        });
+
+        // Filter button functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

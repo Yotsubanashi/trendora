@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes & Footwear - Trendora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .category-hero {
+            background: linear-gradient(135deg, #2C7A7B, #38B2AC);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .category-hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .category-hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .filter-sort-bar {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--soft-coral);
+            background: white;
+            color: var(--soft-coral);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--soft-coral);
+            color: white;
+        }
+
+        .sort-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-dropdown select {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .results-count {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 0 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .category-hero h1 {
+                font-size: 32px;
+            }
+
+            .filter-sort-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .sort-dropdown {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body data-category="shoes">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Trend<span>ora</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands, and more...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-icons">
+                <a href="login.html" class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Shoes & Footwear</span>
+    </div>
+
+    <!-- Category Hero -->
+    <section class="category-hero">
+        <h1>Shoes & Footwear</h1>
+        <p>Step up your style with premium footwear</p>
+    </section>
+
+    <!-- Category Menu -->
+    <section class="category-menu">
+        <div class="category-scroll">
+            <a href="index.html" class="category-item">All Products</a>
+            <a href="women.html" class="category-item">Women</a>
+            <a href="men.html" class="category-item">Men</a>
+            <a href="accessories.html" class="category-item">Accessories</a>
+            <a href="shoes.html" class="category-item">Shoes</a>
+            <a href="bags.html" class="category-item">Bags</a>
+            <a href="beauty.html" class="category-item">Beauty</a>
+            <a href="new-arrivals.html" class="category-item">New Arrivals</a>
+            <a href="sale.html" class="category-item">Sale</a>
+        </div>
+    </section>
+
+    <!-- Filter and Sort Bar -->
+    <section class="filter-sort-bar">
+        <div class="filter-buttons">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Under $25</button>
+            <button class="filter-btn">$25 - $50</button>
+            <button class="filter-btn">$50 - $100</button>
+            <button class="filter-btn">Over $100</button>
+        </div>
+        <div class="sort-dropdown">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="results-count">
+        Showing <strong id="results-count">30</strong> products
+    </div>
+
+    <!-- Products Grid -->
+    <section class="product-section">
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-product-id="400">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop&q=80" alt="Running Shoes">
+                    <span class="sale-badge">-60%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic Running Shoes Premium</div>
+                    <div class="product-price">
+                        <span class="current-price">$48</span>
+                        <span class="original-price">$120</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(189)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-product-id="401">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop&q=80" alt="Sandals" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Sandals Summer Comfort</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(267)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-product-id="402">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602810316498-ab67cf68c8e1?w=400&h=400&fit=crop&q=80" alt="Heels" loading="lazy">
+                    <span class="sale-badge">-29%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Stiletto Heels Elegant Black</div>
+                    <div class="product-price">
+                        <span class="current-price">$89</span>
+                        <span class="original-price">$125</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(156)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-product-id="403">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?w=400&h=400&fit=crop&q=80" alt="Ankle Boots" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Ankle Boots Suede Chelsea</div>
+                    <div class="product-price">
+                        <span class="current-price">$85</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(134)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-product-id="404">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=400&fit=crop&q=80" alt="Loafers" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Patent Leather Loafers Classic</div>
+                    <div class="product-price">
+                        <span class="current-price">$72</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(298)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-product-id="405">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&h=400&fit=crop&q=80" alt="White Sneakers" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic White Sneakers Casual</div>
+                    <div class="product-price">
+                        <span class="current-price">$65</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(1.2k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card" data-product-id="406">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400&h=400&fit=crop&q=80" alt="Slip On Shoes" loading="lazy">
+                    <span class="sale-badge">-35%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Canvas Slip On Shoes Casual</div>
+                    <div class="product-price">
+                        <span class="current-price">$32</span>
+                        <span class="original-price">$49</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(445)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card" data-product-id="407">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=400&fit=crop&q=80" alt="High Tops" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">High Top Sneakers Canvas</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(534)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card" data-product-id="408">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1603808033587-e1ce14c8c1c6?w=400&h=400&fit=crop&q=80" alt="Combat Boots" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Combat Boots Lace Up Leather</div>
+                    <div class="product-price">
+                        <span class="current-price">$95</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(278)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-card" data-product-id="409">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop&q=80" alt="Flip Flops" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Beach Flip Flops Rubber Sole</div>
+                    <div class="product-price">
+                        <span class="current-price">$18</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(892)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-card" data-product-id="410">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1549298916-f52d724204b4?w=400&h=400&fit=crop&q=80" alt="Oxford Shoes" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Oxford Dress Shoes Formal</div>
+                    <div class="product-price">
+                        <span class="current-price">$88</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(345)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-card" data-product-id="411">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1555689502-c4b22d76c56f?w=400&h=400&fit=crop&q=80" alt="Platform Sandals" loading="lazy">
+                    <span class="sale-badge">-28%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Platform Sandals Summer Chic</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                        <span class="original-price">$81</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(367)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 13 -->
+            <div class="product-card" data-product-id="412">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop&q=80" alt="Chunky Sneakers" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Chunky Platform Sneakers Trendy</div>
+                    <div class="product-price">
+                        <span class="current-price">$78</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(612)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 14 -->
+            <div class="product-card" data-product-id="413">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1581101767113-1677fc2beaa8?w=400&h=400&fit=crop&q=80" alt="Mules" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Leather Mules Backless Slides</div>
+                    <div class="product-price">
+                        <span class="current-price">$52</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(423)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 15 -->
+            <div class="product-card" data-product-id="414">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&h=400&fit=crop&q=80" alt="Hiking Boots" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Hiking Boots Waterproof Trail</div>
+                    <div class="product-price">
+                        <span class="current-price">$115</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 16 -->
+            <div class="product-card" data-product-id="415">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&h=400&fit=crop&q=80" alt="Ballet Flats" loading="lazy">
+                    <span class="sale-badge">-22%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Ballet Flats Leather Comfort</div>
+                    <div class="product-price">
+                        <span class="current-price">$45</span>
+                        <span class="original-price">$58</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(789)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 17 -->
+            <div class="product-card" data-product-id="416">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=400&h=400&fit=crop&q=80" alt="Boat Shoes" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Boat Shoes Canvas Deck Shoes</div>
+                    <div class="product-price">
+                        <span class="current-price">$48</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(512)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 18 -->
+            <div class="product-card" data-product-id="417">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=400&h=400&fit=crop&q=80" alt="Wedge Heels" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Wedge Heels Espadrille Summer</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(345)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 19 -->
+            <div class="product-card" data-product-id="418">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=400&h=400&fit=crop&q=80" alt="Slip-On Loafers" loading="lazy">
+                    <span class="sale-badge">-31%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Suede Loafers Slip On Casual</div>
+                    <div class="product-price">
+                        <span class="current-price">$55</span>
+                        <span class="original-price">$80</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(423)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 20 -->
+            <div class="product-card" data-product-id="419">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop&q=80" alt="Athletic Trainers" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Training Shoes Athletic Performance</div>
+                    <div class="product-price">
+                        <span class="current-price">$82</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(923)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 21 -->
+            <div class="product-card" data-product-id="420">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?w=400&h=400&fit=crop&q=80" alt="Knee High Boots" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Knee High Boots Leather Tall</div>
+                    <div class="product-price">
+                        <span class="current-price">$125</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(167)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 22 -->
+            <div class="product-card" data-product-id="421">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1600054800747-be294a6a0d26?w=400&h=400&fit=crop&q=80" alt="Gladiator Sandals" loading="lazy">
+                    <span class="sale-badge">-40%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Gladiator Sandals Strappy</div>
+                    <div class="product-price">
+                        <span class="current-price">$36</span>
+                        <span class="original-price">$60</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(298)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 23 -->
+            <div class="product-card" data-product-id="422">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?w=400&h=400&fit=crop&q=80" alt="Desert Boots" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Desert Boots Chukka Suede</div>
+                    <div class="product-price">
+                        <span class="current-price">$75</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(412)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 24 -->
+            <div class="product-card" data-product-id="423">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400&h=400&fit=crop&q=80" alt="Mary Jane Flats" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Mary Jane Flats Vintage Style</div>
+                    <div class="product-price">
+                        <span class="current-price">$42</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(534)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 25 -->
+            <div class="product-card" data-product-id="424">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop&q=80" alt="Skate Shoes" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Skate Shoes Canvas Durable</div>
+                    <div class="product-price">
+                        <span class="current-price">$52</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(678)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 26 -->
+            <div class="product-card" data-product-id="425">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&h=400&fit=crop&q=80" alt="Pumps" loading="lazy">
+                    <span class="sale-badge">-25%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic Pumps Pointed Toe</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                        <span class="original-price">$91</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(289)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 27 -->
+            <div class="product-card" data-product-id="426">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1562183241-b937e95585b6?w=400&h=400&fit=crop&q=80" alt="Espadrilles" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Canvas Espadrilles Summer</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(456)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 28 -->
+            <div class="product-card" data-product-id="427">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop&q=80" alt="Winter Boots" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Insulated Winter Boots Snow</div>
+                    <div class="product-price">
+                        <span class="current-price">$105</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 29 -->
+            <div class="product-card" data-product-id="428">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop&q=80" alt="Slippers" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Cozy Slippers Fleece Lined</div>
+                    <div class="product-price">
+                        <span class="current-price">$28</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(1.1k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 30 -->
+            <div class="product-card" data-product-id="429">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542219550-37153d387c27?w=400&h=400&fit=crop&q=80" alt="Platform Boots" loading="lazy">
+                    <span class="sale-badge">-33%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Platform Boots Chunky Heel</div>
+                    <div class="product-price">
+                        <span class="current-price">$85</span>
+                        <span class="original-price">$127</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(356)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    <section class="product-section">
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 40px;">
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Previous</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: var(--soft-coral); color: white; border-radius: 8px; cursor: pointer; font-weight: 600;">1</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">2</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Next</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Trendora</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Payment Security</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                        <li><a href="#">Email Support</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                        <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="social-icon"><i class="fab fa-twitter"></i></div>
+                        <div class="social-icon"><i class="fab fa-pinterest"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="tagline">"Where Style Meets Trendora"</p>
+                <p>&copy; 2026 Trendora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Set active category in navigation
+        const currentPage = 'shoes.html';
+        document.querySelectorAll('.category-item').forEach(item => {
+            if (item.getAttribute('href') === currentPage) {
+                item.classList.add('active');
+            }
+        });
+
+        // Filter button functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Fashion - Trendora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .category-hero {
+            background: linear-gradient(135deg, #FF6F61, #ff8a7a);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .category-hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .category-hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .filter-sort-bar {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--soft-coral);
+            background: white;
+            color: var(--soft-coral);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--soft-coral);
+            color: white;
+        }
+
+        .sort-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-dropdown select {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .results-count {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 0 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .category-hero h1 {
+                font-size: 32px;
+            }
+
+            .filter-sort-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .sort-dropdown {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body data-category="women">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Trend<span>ora</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands, and more...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-icons">
+                <a href="login.html" class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Women's Fashion</span>
+    </div>
+
+    <!-- Category Hero -->
+    <section class="category-hero">
+        <h1>Women's Fashion</h1>
+        <p>Discover the latest trends in women's fashion</p>
+    </section>
+
+    <!-- Category Menu -->
+    <section class="category-menu">
+        <div class="category-scroll">
+            <a href="index.html" class="category-item">All Products</a>
+            <a href="women.html" class="category-item">Women</a>
+            <a href="men.html" class="category-item">Men</a>
+            <a href="accessories.html" class="category-item">Accessories</a>
+            <a href="shoes.html" class="category-item">Shoes</a>
+            <a href="bags.html" class="category-item">Bags</a>
+            <a href="beauty.html" class="category-item">Beauty</a>
+            <a href="new-arrivals.html" class="category-item">New Arrivals</a>
+            <a href="sale.html" class="category-item">Sale</a>
+        </div>
+    </section>
+
+    <!-- Filter and Sort Bar -->
+    <section class="filter-sort-bar">
+        <div class="filter-buttons">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Under $25</button>
+            <button class="filter-btn">$25 - $50</button>
+            <button class="filter-btn">$50 - $100</button>
+            <button class="filter-btn">Over $100</button>
+        </div>
+        <div class="sort-dropdown">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="results-count">
+        Showing <strong id="results-count">32</strong> products
+    </div>
+
+    <!-- Products Grid -->
+    <section class="product-section">
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-product-id="100">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop&q=80" alt="Floral Maxi Dress">
+                    <span class="sale-badge">-28%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Floral Maxi Dress Summer Elegance</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                        <span class="original-price">$95</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(342)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-product-id="101">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop&q=80" alt="Silk Blouse" loading="lazy">
+                    <span class="sale-badge">-25%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Silk Blouse Elegant Office Wear</div>
+                    <div class="product-price">
+                        <span class="current-price">$45</span>
+                        <span class="original-price">$60</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(256)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-product-id="102">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400&h=400&fit=crop&q=80" alt="High Waist Jeans" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">High Waist Skinny Jeans Stretch</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(893)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-product-id="103">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&h=400&fit=crop&q=80" alt="Pleated Midi Skirt" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Pleated Midi Skirt Casual Chic</div>
+                    <div class="product-price">
+                        <span class="current-price">$42</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-product-id="104">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1624206112918-f140f087f9f5?w=400&h=400&fit=crop&q=80" alt="Trench Coat" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic Trench Coat Beige</div>
+                    <div class="product-price">
+                        <span class="current-price">$125</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(289)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-product-id="105">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=400&fit=crop&q=80" alt="Knit Cardigan" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Knit Cardigan Cozy Oversized</div>
+                    <div class="product-price">
+                        <span class="current-price">$52</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(128)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card" data-product-id="106">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=400&fit=crop&q=80" alt="Tailored Blazer" loading="lazy">
+                    <span class="sale-badge">-25%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Tailored Blazer Professional</div>
+                    <div class="product-price">
+                        <span class="current-price">$89</span>
+                        <span class="original-price">$119</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(567)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card" data-product-id="107">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=400&h=400&fit=crop&q=80" alt="Wide Leg Jumpsuit" loading="lazy">
+                    <span class="sale-badge">-30%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Wide Leg Jumpsuit Evening Style</div>
+                    <div class="product-price">
+                        <span class="current-price">$68</span>
+                        <span class="original-price">$97</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(178)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card" data-product-id="108">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596558450255-7c0b7be9d56a?w=400&h=400&fit=crop&q=80" alt="Chunky Knit Sweater" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Chunky Knit Sweater Winter Warm</div>
+                    <div class="product-price">
+                        <span class="current-price">$55</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(621)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-card" data-product-id="109">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=400&fit=crop&q=80" alt="Palazzo Pants" loading="lazy">
+                    <span class="sale-badge">-20%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Palazzo Pants Wide Leg Flowy</div>
+                    <div class="product-price">
+                        <span class="current-price">$48</span>
+                        <span class="original-price">$60</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(412)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-card" data-product-id="110">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?w=400&h=400&fit=crop&q=80" alt="Ribbed Crop Top" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Ribbed Crop Top Basic Essential</div>
+                    <div class="product-price">
+                        <span class="current-price">$22</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(756)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-card" data-product-id="111">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1589810876177-c5b24f1e3df1?w=400&h=400&fit=crop&q=80" alt="Denim Shorts" loading="lazy">
+                    <span class="sale-badge">-45%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">High Waist Denim Shorts Distressed</div>
+                    <div class="product-price">
+                        <span class="current-price">$28</span>
+                        <span class="original-price">$51</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(923)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 13 -->
+            <div class="product-card" data-product-id="112">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=400&h=400&fit=crop&q=80" alt="Athletic Tank Top" loading="lazy">
+                    <span class="sale-badge">-30%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Athletic Tank Top Breathable</div>
+                    <div class="product-price">
+                        <span class="current-price">$18</span>
+                        <span class="original-price">$26</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(834)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 14 -->
+            <div class="product-card" data-product-id="113">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&h=400&fit=crop&q=80" alt="Yoga Pants" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">High-Performance Yoga Pants</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(1.2k)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 15 -->
+            <div class="product-card" data-product-id="114">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=400&h=400&fit=crop&q=80" alt="Leather Jacket" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Faux Leather Jacket Biker Style</div>
+                    <div class="product-price">
+                        <span class="current-price">$95</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(567)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 16 -->
+            <div class="product-card" data-product-id="115">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?w=400&h=400&fit=crop&q=80" alt="Bohemian Maxi Dress" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Bohemian Maxi Dress Floral Print</div>
+                    <div class="product-price">
+                        <span class="current-price">$62</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(445)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 17 -->
+            <div class="product-card" data-product-id="116">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=400&fit=crop&q=80" alt="Cocktail Dress" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Elegant Cocktail Dress Evening</div>
+                    <div class="product-price">
+                        <span class="current-price">$85</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(234)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 18 -->
+            <div class="product-card" data-product-id="117">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?w=400&h=400&fit=crop&q=80" alt="White Shirt" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Classic White Button Shirt</div>
+                    <div class="product-price">
+                        <span class="current-price">$39</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(678)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 19 -->
+            <div class="product-card" data-product-id="118">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=400&h=400&fit=crop&q=80" alt="Midi Dress" loading="lazy">
+                    <span class="sale-badge">-35%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Polka Dot Midi Dress Vintage</div>
+                    <div class="product-price">
+                        <span class="current-price">$52</span>
+                        <span class="original-price">$80</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(389)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 20 -->
+            <div class="product-card" data-product-id="119">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop&q=80" alt="Denim Jacket" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Cropped Denim Jacket Vintage</div>
+                    <div class="product-price">
+                        <span class="current-price">$58</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(512)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 21 -->
+            <div class="product-card" data-product-id="120">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=400&h=400&fit=crop&q=80" alt="Wrap Dress" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Floral Wrap Dress Feminine</div>
+                    <div class="product-price">
+                        <span class="current-price">$72</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(298)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 22 -->
+            <div class="product-card" data-product-id="121">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&q=80" alt="Turtleneck Sweater" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Cashmere Turtleneck Sweater</div>
+                    <div class="product-price">
+                        <span class="current-price">$78</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(456)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 23 -->
+            <div class="product-card" data-product-id="122">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop&q=80" alt="Leather Skirt" loading="lazy">
+                    <span class="sale-badge">-40%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Faux Leather Mini Skirt Edgy</div>
+                    <div class="product-price">
+                        <span class="current-price">$36</span>
+                        <span class="original-price">$60</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(367)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 24 -->
+            <div class="product-card" data-product-id="123">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1588117305388-c2631a279f82?w=400&h=400&fit=crop&q=80" alt="Puffer Jacket" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Oversized Puffer Jacket Warm</div>
+                    <div class="product-price">
+                        <span class="current-price">$110</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(289)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 25 -->
+            <div class="product-card" data-product-id="124">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=400&h=400&fit=crop&q=80" alt="Cami Top" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Satin Cami Top Elegant</div>
+                    <div class="product-price">
+                        <span class="current-price">$28</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(543)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 26 -->
+            <div class="product-card" data-product-id="125">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1601762603339-fd61e28b698a?w=400&h=400&fit=crop&q=80" alt="Striped Shirt" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Striped Button Down Shirt</div>
+                    <div class="product-price">
+                        <span class="current-price">$44</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(421)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 27 -->
+            <div class="product-card" data-product-id="126">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?w=400&h=400&fit=crop&q=80" alt="Romper" loading="lazy">
+                    <span class="sale-badge">-38%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Casual Summer Romper Playsuit</div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                        <span class="original-price">$61</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(312)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 28 -->
+            <div class="product-card" data-product-id="127">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&h=400&fit=crop&q=80" alt="Pencil Skirt" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">High Waist Pencil Skirt Office</div>
+                    <div class="product-price">
+                        <span class="current-price">$46</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(278)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 29 -->
+            <div class="product-card" data-product-id="128">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop&q=80" alt="Hoodie" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Oversized Hoodie Cozy Comfort</div>
+                    <div class="product-price">
+                        <span class="current-price">$48</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(892)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 30 -->
+            <div class="product-card" data-product-id="129">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=400&h=400&fit=crop&q=80" alt="Flare Jeans" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Retro Flare Jeans High Rise</div>
+                    <div class="product-price">
+                        <span class="current-price">$64</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(534)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 31 -->
+            <div class="product-card" data-product-id="130">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1562137369-1a1a0bc66744?w=400&h=400&fit=crop&q=80" alt="Linen Pants" loading="lazy">
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Linen Wide Leg Pants Summer</div>
+                    <div class="product-price">
+                        <span class="current-price">$54</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews">(312)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 32 -->
+            <div class="product-card" data-product-id="131">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1571945153533-b197f5e1e243?w=400&h=400&fit=crop&q=80" alt="Bodysuit" loading="lazy">
+                    <span class="sale-badge">-32%</span>
+                    <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Ribbed Bodysuit Long Sleeve</div>
+                    <div class="product-price">
+                        <span class="current-price">$34</span>
+                        <span class="original-price">$50</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews">(678)</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    <section class="product-section">
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 40px;">
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Previous</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: var(--soft-coral); color: white; border-radius: 8px; cursor: pointer; font-weight: 600;">1</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">2</button>
+            <button style="padding: 10px 20px; border: 2px solid var(--soft-coral); background: white; color: var(--soft-coral); border-radius: 8px; cursor: pointer; font-weight: 600;">Next</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Trendora</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Payment Security</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                        <li><a href="#">Email Support</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                        <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="social-icon"><i class="fab fa-twitter"></i></div>
+                        <div class="social-icon"><i class="fab fa-pinterest"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="tagline">"Where Style Meets Trendora"</p>
+                <p>&copy; 2026 Trendora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Set active category in navigation
+        const currentPage = 'women.html';
+        document.querySelectorAll('.category-item').forEach(item => {
+            if (item.getAttribute('href') === currentPage) {
+                item.classList.add('active');
+            }
+        });
+
+        // Filter button functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
